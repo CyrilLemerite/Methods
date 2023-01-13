@@ -28,32 +28,6 @@ do
     {
         case 1:
 
-            Console.WriteLine("Enter Custormer Information: ");
-            Account account = new Account();
-
-            Console.Write("Name: ");
-            account.Name = Console.ReadLine();
-
-            Console.Write("Type Current(c) or Savings(s): ");
-            string type = Console.ReadLine();
-            if (type.ToLower() == "current" || type.ToLower() == "c")
-            {
-                account.Type = "Current";
-            }
-            else if (type.ToLower() == "savings" || type.ToLower() == "s")
-            {
-                account.Type = "Savings";
-            }
-            else
-            {
-                account.Type = "Savings";
-            }
-
-            Console.Write("Opening Balance: ");
-            account.OpeningBalance = Convert.ToDouble(Console.ReadLine());
-
-            account.CurrentBalance = account.OpeningBalance;
-            Console.WriteLine("Current Balance: " + account.CurrentBalance);
 
 
             int j = 0;
@@ -63,13 +37,41 @@ do
                 if (accounts[j] == null)
                 {
                     canCreate = true;
-                    account.Number = Convert.ToString((accounts.Length - 100) + 1).PadLeft(4, '0');
+                    Console.WriteLine("Enter Custormer Information: ");
+                    Account account = new Account();
+
+                    Console.Write("Name: ");
+                    account.Name = Console.ReadLine();
+
+                    Console.Write("Type Current(c) or Savings(s): ");
+                    string type = Console.ReadLine();
+                    if (type.ToLower() == "current" || type.ToLower() == "c")
+                    {
+                        account.Type = "Current";
+                    }
+                    else if (type.ToLower() == "savings" || type.ToLower() == "s")
+                    {
+                        account.Type = "Savings";
+                    }
+                    else
+                    {
+                        account.Type = "Savings";
+                    }
+
+                    Console.Write("Opening Balance: ");
+                    account.OpeningBalance = Convert.ToDouble(Console.ReadLine());
+
+                    account.CurrentBalance = account.OpeningBalance;
+                    Console.WriteLine("Current Balance: " + account.CurrentBalance);
+
+                    account.Number = Convert.ToString((accounts.Length - 100) + j + 1).PadLeft(4, '0');
                     Console.WriteLine("Account Number: " + account.Number);
                     accounts[j] = account;
+                    break;
                 }
                 j++;
 
-            } while (canCreate = false && j < 100);
+            } while (j < 100);
 
             break;
 
